@@ -1,8 +1,11 @@
 from sys import argv
 from csv import DictReader
 
+header = "msno,payment_method_id,payment_plan_days,plan_list_price,actual_amount_paid,is_auto_renew,transaction_date,membership_expire_date,is_cancel,count,discount\n"
+
 def consolidate_transactions(inputname, outputname):
     with open(inputname, "r") as infile, open(outputname, "w") as outfile:
+        outfile.write(header)
         reader = DictReader(infile)
         
         # We start with the first transaction
